@@ -1,67 +1,70 @@
-# Laporan Proyek Machine Learning - Prediksi Harga Rumah
+# Laporan Proyek Machine Learning - Prediksi Harga Properti
 
 ## Domain Proyek
 
-Harga rumah merupakan faktor utama dalam pengambilan keputusan dalam aktivitas jual beli rumah [[1](https://www.researchgate.net/publication/353333759_Factors_Influencing_Housing_Purchase_Decision)] [[2](https://www.researchgate.net/publication/285661484_Housing_Market_A_Review_of_Purchase_Decision_of_Potential_Buyers)] [[3](https://www.researchgate.net/publication/354085963_Analysis_of_County_Consumers%27_Housing_Purchase_Intention_and_Influencing_Factors--Based_on_the_Investigation_of_Anyue_County)]. Kemampuan memprediksi harga rumah tentunya membantu pembeli sebelum melakukan transaksi jual beli rumah. 
+Harga properti merupakan elemen utama dalam pengambilan keputusan dalam proses jual beli properti  [[1](https://www.researchgate.net/publication/353333759_Factors_Influencing_Housing_Purchase_Decision)] [[2](https://www.researchgate.net/publication/285661484_Housing_Market_A_Review_of_Purchase_Decision_of_Potential_Buyers)] [[3](https://www.researchgate.net/publication/354085963_Analysis_of_County_Consumers%27_Housing_Purchase_Intention_and_Influencing_Factors--Based_on_the_Investigation_of_Anyue_County)]. Kemampuan untuk meramalkan harga properti tentunya akan memberikan bantuan kepada calon pembeli sebelum mereka melakukan transaksi jual beli properti.
 
-Dalam hal jual beli rumah harga sangat bergantung pada beberapa faktor, seperti lokasi geografis, demografi, jumlah ruangan, dan lainnya. Salah satu faktor yang menarik untuk ditelusuri lebih lanjut adalah faktor view dari rumah [[4](https://www.sciencedirect.com/science/article/pii/S0264275118312241)] [[5](https://www.researchgate.net/publication/333880192_The_price_of_a_view_Estimating_the_impact_of_view_on_house_prices)]. Oleh karena itu, dengan mempertimbangkan faktor-faktor tersebut, yang juga tersedia pada *dataset*, maka dapat diestimasi harga dari rumah tersebut dan melihat seberapa besar korelasi pengaruh faktor-faktor tersebut.
+Dalam konteks transaksi jual beli properti, harga sangat dipengaruhi oleh beberapa faktor, seperti lokasi geografis, demografi, jumlah ruangan, dan faktor-faktor lainnya. Salah satu aspek menarik untuk diselidiki lebih lanjut adalah pandangan atau pemandangan yang dimiliki oleh properti tersebut [[4](https://www.sciencedirect.com/science/article/pii/S0264275118312241)] [[5](https://www.researchgate.net/publication/333880192_The_price_of_a_view_Estimating_the_impact_of_view_on_house_prices)]. Oleh karena itu, dengan mempertimbangkan variabel-variabel tersebut, yang juga tersedia dalam dataset, kita dapat memperkirakan harga properti dan mengevaluasi seberapa besar pengaruh faktor-faktor tersebut.
 
-Dalam membuat model regresi ada banyak cara algoritma yang bisa dipilih. Salah satu algoritma yang paling umum digunakan adalah regresi. Dengan menggunakan regresi dan memasukkan faktor-faktor dari rumah yang dituju diharapkan dapat memprediksi harga rumah yang dimaksud [[6](https://www.researchgate.net/publication/360473275_HOUSE_PRICE_PREDICTION_USING_LINEAR_REGRESSION_IN_ML)] [[7](https://www.researchgate.net/publication/364039805_Prediction_and_Analysis_of_Housing_Price_Based_on_the_Generalized_Linear_Regression_Model)] [[8](https://www.researchgate.net/publication/23534659_Determinants_of_House_Prices_A_Quantile_Regression_Approach)].
+Ada banyak algoritma yang dapat dipilih dalam pembuatan model regresi. Salah satu algoritma yang umum digunakan adalah regresi linier. Dengan menggunakan regresi dan menggabungkan faktor-faktor yang relevan dengan properti yang dituju, diharapkan kita dapat memprediksi harga properti yang dimaksud [[6](https://www.researchgate.net/publication/360473275_HOUSE_PRICE_PREDICTION_USING_LINEAR_REGRESSION_IN_ML)] [[7](https://www.researchgate.net/publication/364039805_Prediction_and_Analysis_of_Housing_Price_Based_on_the_Generalized_Linear_Regression_Model)] [[8](https://www.researchgate.net/publication/23534659_Determinants_of_House_Prices_A_Quantile_Regression_Approach)].
 
 ## Business Understanding
 
-Pengembangan model prediksi harga rumah memiliki potensi dampak atau manfaat berupa menjadi salah satu alat bantu dalam pengambilan keputusan oleh calon pembeli rumah.
-Contoh potensi manfaat dari hasil prediksi harga rumah yang akurat adalah membantu pembeli dan penjual membuat keputusan jual ataupu beli yang lebih bijaksana.
+Pengembangan model prediksi nilai properti memiliki potensi dampak atau manfaat berupa menjadi salah satu alat bantu dalam pengambilan keputusan oleh calon pembeli properti.
+Contoh potensi manfaat dari hasil prediksi nilai properti yang akurat adalah membantu pembeli dan penjual membuat keputusan jual ataupu beli yang lebih bijaksana.
 
 ### Problem Statements
-- Berdasarkan eksplorasi *dataset*, fitur apa saja yang mempengaruhi dalam menentukan estimasi harga rumah?
-- Bagaimana mengolah *dataset* agar dapat dibuat model prediksi harga rumah?
-- Bagaimanna cara meningkatkan nilai perfoma model prediksi harga rumah?
+- Berdasarkan penjelajahan kumpulan data, faktor-faktor apa saja yang memengaruhi dalam menentukan perkiraan nilai properti?
+- Bagaimana memproses kumpulan data agar dapat dibuat model prediksi nilai properti?
+- Bagaimana cara meningkatkan kinerja model prediksi nilai properti?
 
 ### Goals
-- Mengeksplorasi semua fitur yang tersedia pada *dataset* kemudian membuat melihat korelasi harga dari semua fitur yang sedia untuk melihat faktor apa saja yang paling berpengaruh sampai paling kurang berpengaruh terhadap harga rumah
-- Melakukan proses *data wragling* dan *data preparation* terhadap *dataset* agar dapat dibuat model predksi harga rumah
-- Melakukan beberapa variasi model untuk mendapatkan model yang paling baik dari beberapa model yang telah dibuat untuk prediksi harga rumah
+- Menelusuri semua fitur yang tersedia dalam kumpulan data lalu menganalisis korelasi harga dengan setiap fitur yang ada untuk mengidentifikasi faktor-faktor yang memiliki pengaruh paling signifikan hingga yang paling kurang signifikan terhadap nilai properti
+- Melakukan proses pengolahan data dan persiapan data terhadap kumpulan data agar dapat dibuat model prediksi nilai properti
+- Melakukan beberapa percobaan dengan berbagai model untuk memilih model terbaik dari sekumpulan model yang telah dibuat untuk prediksi nilai properti
 
 
 ### Solution statements
-- Untuk eksplorasi fitur dilakukan Analisis Univariat dan Analisis Multivariat. Analisis Univariat dilakukan untuk mengeksploasi data numerik dan data kategorik. Analisis Multivariat dilakukan untuk melihat hubungan antar fitur. Teknik yang digunakan adalah menggunakan catplot, pairplot, dan heatmap untuk melihat *Correlation Matrix* dari fitur-fitur yang dimiliki.
-- Agar didapatkan model prediksi yang baik maka dilakukan proses *Data Wragling* yang meliputi *Data Gathering*, *Data Assessing*, dan *Data Cleaning*.
-- Untuk mengetahui perfoma model dilakukan pengecekan performa dengan metrik evaluasi.
+- Untuk menjelajahi fitur, kami melakukan Analisis Univariat dan Analisis Multivariat. Analisis Univariat digunakan untuk mengeksplorasi data numerik dan data kategorikal. Analisis Multivariat digunakan untuk memahami hubungan antara berbagai fitur. Kami menggunakan 
+ teknik seperti catplot, pairplot, dan heatmap untuk mengamati Matrix Korelasi dari fitur-fitur yang ada.
+- Untuk mencapai model prediksi yang optimal, kami menjalankan proses Pengelolaan Data yang mencakup Pengumpulan Data, Evaluasi Data, dan Pembersihan Data.
+- Untuk menilai kinerja model, kami melakukan pengecekan performa menggunakan metrik evaluasi.
 
 ## Data Understanding
-Data yang digunakan dalam pembuatan model merupakan data sekunder. Data diambil dari Kaggle dengan nama *dataset* yaitu *California House Price*. 
+Informasi yang digunakan dalam pembuatan model berasal dari data sekunder. Data tersebut diunduh dari platform Kaggle dengan judul dataset yang dikenal sebagai California House Price.
 
 URL: https://www.kaggle.com/datasets/shibumohapatra/house-price
 
-Berikut merupakan detail dari *dataset* yang digunakan untuk pembuatan model:
-- Dataset berupa CSV
-- Dataset terdiri dari 20640 *records* dengan 10 buah fitur yang diukur.
-- Dataset terdiri dari 1 data kategori dan 9 data numerik.
-- Dataset memiliki *missing value* sejumlah 205 records
+Ini adalah spesifikasi dari kumpulan data yang digunakan untuk pembuatan model:
 
-### Variabel-variabel pada *dataset* adalah sebagai berikut:
-- longitude : koordinat geografis yang digunakan untuk menunjukkan posisi suatu titik dari arah utara ke selatan yang digunakan menentukan posisi suatu titik pada permukaan bumi (diukur dalam satuan derajat)
-- latitude : koordinat geografis yang digunakan untuk menunjukkan posisi suatu titik dari arah timur ke barat yang digunakan menentukan posisi suatu titik pada permukaan bumi (diukur dalam satuan derajat)
-- housing_median_age : usia rata-rata sebuah rumah dalam satu blok. angka yang lebih rendah menunjukkan bangunan yang lebih baru (dalam satuan tahun)
-- total_rooms : Jumlah total kamar dalam satu blok (dalam satuan buah)
-- total_bedrooms : jumlah total kamar tidur dalam satu blok (dalam satuan buah)
-- population : jumlah total orang yang tinggal dalam satu blok (dalam satuan orang)
-- households : jumlah total rumah tangga, sekelompok orang yang tinggal di dalam satu unit rumah, untuk satu blok (dalam satuan orang)
-- median_income : pmedian endapatan untuk rumah tangga dalam satu blok rumah (diukur dalam Dolar AS)
-- ocean_proximity : posisi relatif lokasi rumah terhadap lautan/laut (berupa kategori 'NEAR BAY', '<1H OCEAN', 'INLAND', 'NEAR OCEAN', 'ISLAND')
-- median_house_value : median harga rumah untuk rumah tangga dalam satu blok (diukur dalam Dolar AS)
+- Kumpulan data tersedia dalam format CSV.
+- Terdapat 20640 catatan dalam kumpulan data dengan 10 fitur yang diukur.
+- Kumpulan data terdiri dari 1 entri kategorikal dan 9 entri numerik.
+- Terdapat missing value dalam kumpulan data sebanyak 205 catatan.
 
-Untuk memahami data lebih lanjut, dilakukan Analisis Univariat dan Analisis Multivariat, serta Visualisasi Data
+### Variabel-variabel dalam kumpulan data adalah sebagai berikut:
 
-Analisis Univariat merupakan bentuk analisis data yang hanya merepresentasikan informasi yang terdapat pada satu variabel.  Jenis visualisasi ini umumnya digunakan untuk memberikan gambaran terkait distribusi sebuah variabel dalam suatu *dataset*. Sedangkan, Analisis Multivariat tmerupakan jenis analisis data yang terdapat dalam lebih dari dua variabel. Jenis visualisasi ini digunakan untuk merepresentasikan hubungan dan pola yang terdapat dalam multidimensional data. 
+- longitude : Koordinat geografis yang menunjukkan posisi suatu titik dari arah utara ke selatan pada permukaan bumi (diukur dalam satuan derajat)
+- latitude : Koordinat geografis yang menunjukkan posisi suatu titik dari arah timur ke barat pada permukaan bumi (diukur dalam satuan derajat)
+- housing_median_age : Usia rata-rata rumah dalam satu blok. Angka yang lebih rendah menunjukkan bangunan yang lebih baru (diukur dalam satuan tahun)
+- total_rooms : Jumlah total kamar dalam satu blok (diukur dalam satuan)
+- total_bedrooms : Jumlah total kamar tidur dalam satu blok (diukur dalam satuan)
+- population : Jumlah total orang yang tinggal dalam satu blok (diukur dalam satuan orang)
+- households : Jumlah total rumah tangga dalam satu blok (diukur dalam satuan)
+- median_income : Pendapatan median untuk rumah tangga dalam satu blok (diukur dalam Dolar AS)
+- ocean_proximity : Posisi relatif lokasi rumah terhadap lautan/laut (kategori 'NEAR BAY', '<1H OCEAN', 'INLAND', 'NEAR OCEAN', 'ISLAND')
+- median_house_value : Median harga rumah untuk rumah tangga dalam satu blok (diukur dalam Dolar AS)
 
-Selain melalui analisis, dilakukan juga Visualisasi Data. Memvisualisasikan data memberikan wawasan mendalam tentang perilaku berbagai fitur-fitur yang tersedia dalam *dataset*. 
-Teknik visualisasi yang digunakan pada pembuatan model proyek ini adalah dengan menggunakan catplot yang digunakan untuk memplot distribusi data pada data kategori, pairplot yang digunakan untuk melakukan hubungan antar fitur dalam *dataset*, dan heatmap yang menampilkan korelasi antar fitur yang ada dalam *dataset* dalam bentuk matriks.
+Untuk memperoleh pemahaman yang lebih mendalam tentang data, dilakukan Analisis Univariat dan Analisis Multivariat, serta Visualisasi Data.
 
-Berikut adalah hasil Exploratory Data Analysis (EDA), dimana Gambar 1 merupakan EDA Analisis Univariat dan Gambar 2 merupakan EDA Analisis Multivariat.
+Analisis Univariat merupakan bentuk analisis data yang hanya fokus pada satu variabel. Jenis analisis ini umumnya digunakan untuk memahami distribusi variabel dalam sebuah kumpulan data. Sedangkan, Analisis Multivariat melibatkan lebih dari dua variabel, dan digunakan untuk mengeksplorasi hubungan dan pola dalam data multidimensional.
 
-![download (2)](https://github.com/ahmadsuaif/Proyek-Pertama-Predictive-Analytics/assets/66425290/97c7ccca-2ef8-4f02-aefa-e847c902dc25)
+Selain menggunakan analisis, Visualisasi Data juga penting. Memvisualisasikan data membantu untuk memperoleh pemahaman yang lebih dalam tentang perilaku berbagai fitur dalam kumpulan data.
+Pada proyek ini, kami menggunakan berbagai teknik visualisasi, termasuk catplot untuk memvisualisasikan distribusi data kategorikal, pairplot untuk mengeksplorasi hubungan antar fitur, dan heatmap untuk menampilkan korelasi antar fitur dalam bentuk matriks.
+
+Berikut adalah hasil Exploratory Data Analysis (EDA), dimana Gambar 1 menampilkan EDA Analisis Univariat dan Gambar 2 menampilkan EDA Analisis Multivariat.
+
+![download (2)](https://github.com/whiteevl/laporan/blob/main/Screenshot%202024-03-06%20173343.png)
 
 Gambar 1a. Analisis Univariat (Data Kategori)
 
@@ -69,13 +72,14 @@ Gambar 1a. Analisis Univariat (Data Kategori)
 
 Gambar 1b. Analisis Univariat (Data Numerik)
 
-Berdasarkan Gambar 1a , dapat dilihat bahwa distribusi data kategori untuk 'ocean_proximity' memiliki perbandingan jumlah yang tidak sama, untuk nilai data '<1H OCEAN' berjumlah 7607 dengan persentase 43.2% sedangkan nilai data 'ISLAND' hanya berjumlah 5. Lebih jauh, pada Gambar 1b, untuk data numerik memiliki karakteristik, yaitu:
-- koordinat longitude rumah mayoritas berada pada -118 derajat dan -122 derajat dan koordinat latitude rumah mayoritas berada pada 34 derajat dan 38 derajat
-- median dari umur rumah banyak terdistribusi pada rentang umur 10 - 40, namun nilai terbanyak terdapat pada nilai 50.
-- rata-rata terbanyak untuk data total room dan total bedroom yaitu di antara angka 1000-2000 room dan 200-400 bedroom.
-- rata-rata terbanyak untuk data population dan households berada di antara angka 500-1000 dan 200-400.
-- median income dan median house value terbanyak masing-masing berada di antara angka 3 dan 200000.
-- distribusi median house value miring ke kanan (right-skewed). Hal ini akan berimplikasi pada model.
+Berdasarkan Gambar 1a, terlihat bahwa distribusi data kategori untuk 'ocean_proximity' memiliki perbandingan jumlah yang tidak merata. Misalnya, nilai data '<1H OCEAN' mencapai 7607 dengan persentase 43.2%, sementara nilai data 'ISLAND' hanya sebanyak 5. Lebih lanjut, pada Gambar 1b, karakteristik data numerik mencakup:
+
+- Koordinat longitude rumah mayoritas terletak pada rentang -118 hingga -122 derajat, dan koordinat latitude rumah mayoritas berada pada rentang 34 hingga 38 derajat.
+- Median usia rumah paling banyak tersebar di rentang 10 hingga 40 tahun, dengan nilai terbanyak terjadi pada usia 50 tahun.
+- Rata-rata tertinggi untuk total kamar dan total kamar tidur berada di kisaran 1000-2000 dan 200-400, masing-masing.
+- Rata-rata tertinggi untuk populasi dan jumlah rumah tangga terletak di antara 500-1000 dan 200-400.
+- Pendapatan median dan nilai rumah median tertinggi masing-masing berada di antara angka 3 dan 200,000.
+- Distribusi median nilai rumah condong ke kanan (right-skewed), yang akan memiliki implikasi pada model.
 
 ![download (4)](https://github.com/ahmadsuaif/Proyek-Pertama-Predictive-Analytics/assets/66425290/cc24f89a-96db-4b08-81d5-7828bddf6693)
 
@@ -89,40 +93,41 @@ Gambar 2b. Analisis Multivariat (Data Numerik)
 
 Gambar 2c. Analisis Multivariat (Correlation Matrix)
 
-Pada Gambar 2a tampak persebaran data 'ocean proximity' terhadap 'median house value'. Dengan mengamati rata-rata 'median_house_value' relatif terhadap fitur kategori di atas, diperoleh insight sebagai berikut:
-- Pada fitur 'ocean_proximity', rata-rata 'median_house_value' cenderung bervariasi. Rentangnya berada antara 120000 hingga 400000.
-- Nilai 'median_house_value' tertinggi berada pada nilai 'ocean_proximity' yaitu 'ISLAND' dan nilai 'median_house_value' terendah berada pada nilai 'ocean_proximity' yaitu 'INLAND'. Sehingga, fitur 'ocean_proximity' memiliki pengaruh yang signifikan terhadap rata-rata 'median_house_value'.
-- Kesimpulan akhir, fitur kategori memiliki pengaruh terhadap fitur numerik 'median_house_value'.
+Pada Gambar 2a terlihat penyebaran data 'ocean proximity' terhadap 'median house value'. Dari perbandingan rata-rata 'median_house_value' terhadap fitur kategorikal di atas, dapat disimpulkan:
 
-Pada Gambar 2b, dengan menggunakan fungsi pairplot dari library seaborn, tampak terlihat relasi pasangan dalam dataset. Dari gambar, terlihat plot relasi masing-masing fitur numerik pada dataset. Pada pola sebaran data grafik pairplot, terlihat bahwa 'median_income' memiliki korelasi dengan fitur 'median_house_value'. Sedangkan kedua fitur lainnya terlihat memiliki korelasi yang lemah karena sebarannya tidak membentuk pola
+- Fitur 'ocean_proximity' memiliki variasi rata-rata 'median_house_value' yang signifikan, berkisar antara 120,000 hingga 400,000.
+- Nilai tertinggi dari 'median_house_value' terdapat pada nilai 'ocean_proximity' 'ISLAND', sementara nilai terendahnya ada pada nilai 'ocean_proximity' 'INLAND'. Oleh karena itu, fitur 'ocean_proximity' memiliki dampak yang penting terhadap rata-rata 'median_house_value'.
+- Kesimpulan akhirnya adalah bahwa fitur kategorikal memengaruhi fitur numerik 'median_house_value'.
 
-Terakhir, Gambar 2c merupakan Correlation Matrix menunjukkan hubungan antar fitur dalam nilai korelasi. Jika diamati, fitur 'median_income' memiliki skor korelasi yang cukup besar (0.63) dengan fitur target 'median_house_value'. Artinya, fitur 'median_house_value' berkorelasi cukup tinggi dengan keempat fitur tersebut. Sementara itu, fitur lainnya memiliki korelasi negatif sehingga fitur tersebut dapat dieliminasi.
+Pada Gambar 2b, menggunakan fungsi pairplot dari pustaka seaborn, terlihat relasi pasangan dalam kumpulan data. Plot pairplot menunjukkan hubungan antar fitur numerik dalam kumpulan data. Dari pola penyebaran data pada grafik pairplot, terlihat bahwa 'median_income' memiliki korelasi yang signifikan dengan fitur 'median_house_value'. Namun, korelasi antara fitur lainnya terlihat lemah karena tidak membentuk pola yang jelas.
+
+Terakhir, Gambar 2c menunjukkan Matriks Korelasi yang menampilkan hubungan antar fitur dalam bentuk nilai korelasi. Dari hasil observasi, fitur 'median_income' memiliki korelasi yang cukup tinggi (0.63) dengan fitur target 'median_house_value', menunjukkan korelasi yang signifikan antara kedua fitur tersebut. Sementara itu, fitur lainnya memiliki korelasi negatif, yang mengindikasikan bahwa fitur tersebut dapat dihapus dari model.
   
 ## Data Preparation
-Pada proses *Data Preparation* dilakukan kegiatan seperti *Data Gathering*, *Data Assessing*, dan *Data Cleaning*.
-Pada proses *Data Gathering*, data diimpor sedemikian rupa agar bisa dibaca dengan baik menggunakan *datafram*e Pandas.
-Untuk proses *Data Assessing*, berikut adalah beberapa pengecekan yang dilakukan:
-- Duplicate data (data yang serupa dengan data lainnya)
-- Missing value (data atau informasi yang "hilang" atau tidak tersedia)
-- Outlier (data yang menyimpang dari rata-rata sekumpulan data yang ada)
- 
-Pada proses *Data Cleaning*, secara garis besar, terdapat tiga metode yang dapat digunakan antara lain seperti berikut:
-- Dropping (metode yang dilakukan dengan cara menghapus sejumlah baris data)
-- Imputation (metode yang dilakukan dengan cara mengganti nilai yang "hilang" atau tidak tersedia dengan nilai tertentu yang bisa berupa median atau mean dari data)
-- Interpolation (metode menghasilkan titik-titik data baru dalam suatu jangkauan dari suatu data)
+Pada tahap Pengolahan Data, dilakukan aktivitas seperti Pengumpulan Data, Evaluasi Data, dan Pembersihan Data.
+Pada tahap Pengumpulan Data, data diimpor dengan format yang sesuai agar dapat dibaca dengan baik menggunakan pustaka Pandas.
+Untuk tahap Evaluasi Data, beberapa pemeriksaan yang dilakukan meliputi:
 
-Pada kasus proyek ini tidak ditemukan data duplikat. Pada proyek ini ditemukan *Missing Value*. Adapaun metode yang digunakan untuk mengatasi hal ini adalah dengan menerapkan *imputation* dimana data yang *missing* diganti dengan nilai *mean*. Untuk *outlier* sendiri dilakukan metode *dropping* menggunakan metode IQR. IQR sendiri didapatkan dengan cara mengurangi Q3 dengan Q1 sebagaimana rumusan berikut. 
+- Duplikasi data (data yang identik dengan data lainnya)
+- Missing value (data atau informasi yang tidak lengkap atau tidak tersedia)
+- Outlier (data yang signifikan berbeda dari nilai rata-rata dalam himpunan data)
+
+Pada tahap Pembersihan Data, secara umum, terdapat tiga metode yang dapat digunakan, yaitu sebagai berikut:
+
+- Dropping (metode yang melibatkan penghapusan sejumlah baris data)
+- Imputation (metode yang melibatkan penggantian nilai yang hilang atau tidak tersedia dengan nilai tertentu, seperti median atau mean dari data)
+- Interpolation (metode yang menghasilkan titik-titik data baru di antara data yang ada)
+
+Pada kasus proyek ini, tidak ditemukan adanya duplikasi data. Namun, ditemukan Missing Value. Untuk mengatasi masalah ini, metode yang digunakan adalah imputation, di mana nilai yang hilang diganti dengan nilai mean. Sedangkan untuk outlier, metode dropping digunakan dengan menggunakan metode IQR. Nilai IQR sendiri dihitung dengan mengurangkan nilai Q3 dengan Q1 seperti yang dijelaskan berikut ini.
 
 $$ IQR = Q<sub>3</sub> - Q<sub>1</sub> $$
 
 dimana
 Q<sub>1</sub> adalah kuartil pertama dan Q<sub>3</sub> adalah kuartil ketiga.
 
-Dengan menggunakan metode IQR, dapat ditentukan *outlier* melalui suatu nilai batas yang ditentukan. Setelah menggunakan metode IQR dimana *dataset* yang sebelumnya berjumlah 20640 menjadi 17609.
- 
-Semua proses ini diperlukan dalam rangka membuat model yang baik. 
+Dengan menggunakan metode IQR, kita dapat menentukan outlier dengan menggunakan nilai batas yang telah ditentukan. Setelah menerapkan metode IQR, jumlah dataset yang awalnya 20640 menjadi 17609. Seluruh proses ini sangat penting dalam upaya menciptakan model yang optimal.
 
-Untuk mereduksi jumlah fitur dilakukan proses PCA. Teknik reduksi ini adalah prosedur yang mengurangi jumlah fitur dengan tetap mempertahankan informasi pada data. PCA ini adalah teknik untuk mereduksi dimensi, mengekstraksi fitur, dan mentransformasi data dari “n-dimensional space” ke dalam sistem berkoordinat baru dengan dimensi m, di mana m lebih kecil dari n. Pada proyek ini, fitu 'housing_median_age',	'total_rooms',	'total_bedrooms',	'households' divisualisasikan untuk melihat hubungan di antara fitur-fitur tersebut. sperti yang terlihat pada Gambar 3 berikut.
+Untuk mengurangi jumlah fitur, dilakukan proses PCA. Teknik reduksi ini merupakan langkah untuk mengurangi dimensi data dengan tetap mempertahankan informasi yang relevan. PCA mengubah data dari ruang dimensi-n ke dalam sistem koordinat baru dengan dimensi m, di mana m lebih kecil dari n. Dalam proyek ini, fitur 'housing_median_age', 'total_rooms', 'total_bedrooms', dan 'households' divisualisasikan untuk mengeksplorasi hubungan antar fitur tersebut, seperti yang terlihat pada Gambar 3 di bawah ini.
 
 ![download (7)](https://github.com/ahmadsuaif/Proyek-Pertama-Predictive-Analytics/assets/66425290/b05e92dd-398d-4932-9ad2-f75400ac1e26)
 
