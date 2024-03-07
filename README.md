@@ -68,7 +68,7 @@ Berikut adalah hasil Exploratory Data Analysis (EDA), dimana Gambar 1 menampilka
 
 Gambar 1a. Analisis Univariat (Data Kategori)
 
-![download (3)](https://github.com/ahmadsuaif/Proyek-Pertama-Predictive-Analytics/assets/66425290/5e4ae928-6257-4694-a78f-b538141ffc9c)
+![download (3)](https://github.com/whiteevl/laporan/blob/main/download.png)
 
 Gambar 1b. Analisis Univariat (Data Numerik)
 
@@ -81,15 +81,15 @@ Berdasarkan Gambar 1a, terlihat bahwa distribusi data kategori untuk 'ocean_prox
 - Pendapatan median dan nilai rumah median tertinggi masing-masing berada di antara angka 3 dan 200,000.
 - Distribusi median nilai rumah condong ke kanan (right-skewed), yang akan memiliki implikasi pada model.
 
-![download (4)](https://github.com/ahmadsuaif/Proyek-Pertama-Predictive-Analytics/assets/66425290/cc24f89a-96db-4b08-81d5-7828bddf6693)
+![download (4)](https://github.com/whiteevl/laporan/blob/main/download%20(1).png)
 
 Gambar 2a. Analisis Multivariat (Data Kategori)
 
-![download (5)](https://github.com/ahmadsuaif/Proyek-Pertama-Predictive-Analytics/assets/66425290/ac954bef-c429-495b-be3d-5a0c99ae3d21)
+![download (5)](https://github.com/whiteevl/laporan/blob/main/download%20(2).png)
 
 Gambar 2b. Analisis Multivariat (Data Numerik)
 
-![download (6)](https://github.com/ahmadsuaif/Proyek-Pertama-Predictive-Analytics/assets/66425290/ea33a151-4229-484b-a59d-6225572bff5b)
+![download (6)](https://github.com/whiteevl/laporan/blob/main/download%20(3).png)
 
 Gambar 2c. Analisis Multivariat (Correlation Matrix)
 
@@ -129,7 +129,7 @@ Dengan menggunakan metode IQR, kita dapat menentukan outlier dengan menggunakan 
 
 Untuk mengurangi jumlah fitur, dilakukan proses PCA. Teknik reduksi ini merupakan langkah untuk mengurangi dimensi data dengan tetap mempertahankan informasi yang relevan. PCA mengubah data dari ruang dimensi-n ke dalam sistem koordinat baru dengan dimensi m, di mana m lebih kecil dari n. Dalam proyek ini, fitur 'housing_median_age', 'total_rooms', 'total_bedrooms', dan 'households' divisualisasikan untuk mengeksplorasi hubungan antar fitur tersebut, seperti yang terlihat pada Gambar 3 di bawah ini.
 
-![download (7)](https://github.com/ahmadsuaif/Proyek-Pertama-Predictive-Analytics/assets/66425290/b05e92dd-398d-4932-9ad2-f75400ac1e26)
+![download (7)](https://github.com/whiteevl/laporan/blob/main/download%20(4).png)
 
 Gambar 3 Visualisasi Hubungan antar Fitur sebelum Reduksi PCA
 
@@ -227,7 +227,7 @@ Berdasarkan data pada Tabel 1, secara umum, Model 3 (RF1) dan Model 4 (RF2) menu
 
 Untuk memperdalam perbandingan antara Model 1, 2, 3, dan 4, silakan lihat Gambar 4 di bawah ini.
 
-![download (1)](https://github.com/ahmadsuaif/Proyek-Pertama-Predictive-Analytics/assets/66425290/a46a2fa1-d5c5-4371-a18f-409a84bb42da)
+![download (1)](https://github.com/whiteevl/laporan/blob/main/download%20(5).png)
 
 Gambar 4. Perbandingan Model berdasarkan Nilai Error (dalam 1e6)
 
