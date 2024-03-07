@@ -133,44 +133,47 @@ Untuk mengurangi jumlah fitur, dilakukan proses PCA. Teknik reduksi ini merupaka
 
 Gambar 3 Visualisasi Hubungan antar Fitur sebelum Reduksi PCA
 
-Berdasarkan Gambar 3 dapat diketahui yang memiliki hubungan antar fitur hanya tiga yaitu 'total_rooms',	'total_bedrooms',	'households'. Selanjutnya, 3 fitur ini dapat direduksi dengan PCA. Sebelum itu, cek proporsi informasi dari ketiga komponen PCs tadi.
+Berdasarkan Gambar 3, dapat diamati bahwa hanya tiga fitur yang memiliki hubungan antara satu sama lain, yaitu 'total_rooms', 'total_bedrooms', dan 'households'. Selanjutnya, kita akan mereduksi ketiga fitur ini menggunakan PCA. Sebelum melakukannya, kita perlu memeriksa proporsi informasi dari ketiga komponen PC tersebut.
 
 ```
 pca.explained_variance_ratio_.round(3)
 ```
-Potongan kode tersebut memberikan keluaran berupa array([0.985, 0.014, 0.001]). Berdasarkan hasil ini, yang dipertahankan adalah PC (komponen) pertama saja karena dari output yang dideroleh diketahui bahwa 98.5% informasi pada ketiga fitur 'total_rooms',	'total_bedrooms',	'households' terdapat pada PC pertama. Sedangkan sisanya, sebesar 1.4% dan 0.1% terdapat pada PC kedua dan ketiga. PC pertama ini akan menjadi fitur 'house properties' menggantikan ketiga fitur lainnya ('total_rooms',	'total_bedrooms',	'households').
+Hasil kode tersebut menghasilkan keluaran berupa array([0.985, 0.014, 0.001]). Berdasarkan hasil ini, kita dapat menyimpulkan bahwa hanya PC (Principal Component) pertama yang akan dipertahankan. Hal ini disebabkan oleh fakta bahwa 98.5% dari informasi yang terdapat pada ketiga fitur 'total_rooms', 'total_bedrooms', dan 'households' terkandung dalam PC pertama. Sementara itu, hanya 1.4% dan 0.1% informasi yang tersisa terdapat pada PC kedua dan ketiga. Oleh karena itu, PC pertama akan digunakan sebagai representasi fitur 'house properties', menggantikan peran ketiga fitur lainnya ('total_rooms', 'total_bedrooms', 'households').
 
 
-Setelah data dibersihkan, *dataset* dibagi menjadi data train dan data test untuk proses *Modeling*, dimana rasio pembagian data yang dipilih adalah 90:10 mengingat data test untuk rasio tersebut sudah terbilang cukup. 
-Adapun detail dari *dataset* tersebut adalah:
-- Total sampel di dalam *dataset* train: 15848
-- Total sampel di dalam *dataset* test: 1761
+Setelah proses pembersihan data selesai, kumpulan data dibagi menjadi data latih dan data uji untuk proses Modeling, dengan menggunakan rasio pembagian data 90:10 karena data uji sudah cukup representatif untuk evaluasi model. Detail kumpulan data setelah pembagian adalah sebagai berikut:
+
+- Jumlah sampel dalam kumpulan data latih: 15848
+- Jumlah sampel dalam kumpulan data uji: 1761
 
 ## Modeling
-Seperti yang dijelaskan di awal, model yang dipilih adalah model regresi karena merupakan salah satu algoritma yang paling umum digunakan dalam pembuatan model prediksi. Dalam bentuk yang sederhana, regresi terdiri dari intersep dan slope yang dituliskan dalam rumusan berikut
+Seperti yang telah dijelaskan sebelumnya, pilihan model jatuh pada model regresi karena merupakan salah satu algoritma yang sering digunakan dalam pembuatan model prediksi. Secara sederhana, regresi terdiri dari intersep dan kemiringan yang dapat dijelaskan dalam rumus berikut
 
 $$ y = a + bX $$
 
-dimana: 
-- y adalah variabel kriterium (variabel terikat yang digunakan untuk memprediksi)
-- a adalah intersep (variabel konstan yang memiliki arti sebagai titik perpotongan suatu garis dengan sumbu Y),
-- b adalah slope (nilai koefisien yang menyatakan ukuran kemiringan suatu garis), dan
-- X adalah variabel prediktor (variabel yang digunakan untuk memprediksi atau menjelaskan variabel lain dalam suatu model)
+dimana:
 
-Secara umum, regresi ini itu sendiri digunakan untuk meramalkan pengaruh variabel prediktor terhadap variabel kriterium atau membuktikan ada atau tidaknya hubungan fungsional antara variabel bebas (X) dengan variabel terikat (y).
+- y merupakan variabel dependen (variabel yang ingin diprediksi)
+- a adalah intercept (nilai konstanta yang menunjukkan titik perpotongan garis regresi dengan sumbu Y),
+- b adalah slope (koefisien yang mengindikasikan kemiringan garis regresi), dan
+- X adalah variabel independen (variabel yang digunakan untuk memprediksi atau menjelaskan variabel dependen dalam model).
 
-Namun begitu terdapat kelebihan dan kekurangan dari model regresi, yaitu:
+Secara umum, regresi digunakan untuk memprediksi pengaruh variabel prediktor terhadap variabel dependen atau untuk menentukan keberadaan hubungan fungsional antara variabel independen (X) dan variabel dependen (y).
+
+
+Namun, model regresi memiliki kelebihan dan kelemahan, di antaranya:
 
 Kelebihan regresi:
-- Kemudahan untuk digunakan
-- Kekuatan Prediktor dalam mengidentifikasi sekuat apa pengaruh yang diberikan oleh variabel prediktor (variabel independen) terhadap variabel lainnya (variabel dependen).
-- Dapat memprediksi nilai/tren di masa yang mendatang
 
-Kelemahan dari model regresi adalah karena hasil ramalan dari analisis regresi merupakan nilai estimasi sehingga kemungkinan untuk tidak sesuai dengan data aktual tetaplah ada.
+- Mudah digunakan
+- Mampu mengidentifikasi kekuatan pengaruh variabel prediktor (variabel independen) terhadap variabel dependen
+- Mampu memprediksi nilai atau tren di masa depan
 
-Pada proyek yang dikerjakan, algoritma regresi yang coba dibandingkan adalah regresi linear, regresi ridge, *random forest regressor*, dan *random forest regressor* dengan hyperparamter tuning. Regresi linear adalah teknik analisis data yang memprediksi nilai data yang tidak diketahui dengan menggunakan nilai data lain yang terkait dan diketahui dimana secara matematis dimodelkan sebagai persamaan linier, regresi ridge merupakan metode estimasi koefisien regresi yang diperoleh melalui penambahan konstanta bias c, dan random forest adalah suatu algoritma yang digunakan pada klasifikasi data dalam jumlah yang besar dimana teknik klasifikasi *random forest* dilakukan melalui penggabungan pohon dengan melakukan training pada sampel data yang dimiliki.
+Namun, model regresi memiliki kelemahan karena hasil prediksi dari analisis regresi adalah estimasi, sehingga kemungkinan ketidaksesuaian dengan data aktual tetap ada.
 
-Untuk meningkatkan model, dilakukan *hyperparamter tuning*. Adapun paramater yang di-tuning antara lain n_estimators', 'max_depth', 'min_samples_split', dan 'min_samples_leaf. Untuk memudahkan proses *tuning* digunakan GridSearchCV. GridSearchCV itu sendiri merupakan bagian dari modul scikit-learn yang dapat digunakan untuk mendapatkan nilai *hyperparameter* secara otomatis. Grid Search adalah metode yang digunakan untuk mencari parameter yang paling tepat untuk meningkatkan performa model dengan mencoba seluruh kombinasi *hyperparameter* yang diberikan.
+Dalam proyek ini, algoritma regresi yang dibandingkan mencakup regresi linear, regresi ridge, random forest regressor, dan random forest regressor dengan penyetelan hyperparameter. Regresi linear adalah metode analisis data yang memprediksi nilai data yang tidak diketahui dengan menggunakan nilai data yang terkait dan diketahui, yang dimodelkan secara matematis sebagai persamaan linier. Regresi ridge merupakan teknik estimasi koefisien regresi yang melibatkan penambahan konstanta bias c. Random forest adalah sebuah algoritma yang digunakan untuk klasifikasi data dalam skala besar, di mana teknik klasifikasi random forest melibatkan penggabungan pohon melalui pelatihan pada sampel data yang dimiliki.
+
+Untuk meningkatkan kinerja model, dilakukan penyetelan hyperparameter. Beberapa parameter yang disesuaikan meliputi 'n_estimators', 'max_depth', 'min_samples_split', dan 'min_samples_leaf'. Untuk menyederhanakan proses penyetelan, digunakan GridSearchCV. GridSearchCV adalah bagian dari pustaka scikit-learn yang memungkinkan pencarian otomatis nilai hyperparameter. Grid Search adalah metode yang digunakan untuk menemukan parameter optimal yang dapat meningkatkan kinerja model dengan mencoba berbagai kombinasi hyperparameter yang diberikan.
 
 Berikut adalah nilai parameter *tuning*
 ```
@@ -204,10 +207,11 @@ y<sub>i</sub> mewakili nilai yang diamati,
 n adalah jumlah titik data,
 Var(y) mewakili varians dari nilai yang diamati.
 
-Berikut merupakan penjelasan kegunaan dari masing-masing metrik yang digunakan:
-- MAE menghitung rata-rata dari selisih absolut antara nilai prediksi dan nilai aktual. Semakin kecil nilai MAE, semakin baik kualitas model tersebut.
-- MSE menghitung rata-rata dari selisih kuadrat antara nilai prediksi dan nilai aktual. Semakin kecil nilai MSE, semakin baik kualitas model tersebut.
-- R<sup>2</sup> digunakan untuk menilai seberapa besar pengaruh variabel independen tertentu terhadap variabel dependen
+Berikut adalah penjelasan tentang penggunaan masing-masing metrik yang digunakan:
+
+- MAE (Mean Absolute Error) menghitung rata-rata dari selisih absolut antara nilai prediksi dan nilai aktual. Semakin kecil nilai MAE, semakin baik kualitas model.
+- MSE (Mean Squared Error) menghitung rata-rata dari selisih kuadrat antara nilai prediksi dan nilai aktual. Semakin kecil nilai MSE, semakin baik kualitas model.
+- R<sup>2</sup> (R-squared) digunakan untuk mengevaluasi seberapa besar variabilitas dalam variabel dependen yang dapat dijelaskan oleh variabel independen.
 
 Tabel 1 berikut merupakan perbandingan 4 buah model yang coba dibandingkan
 
@@ -219,17 +223,18 @@ Tabel 1 berikut merupakan perbandingan 4 buah model yang coba dibandingkan
 
 Tabel 1. Perbandingan Performa MAE, MSE, dan R<sup>2</sup> Model
 
-Berdasarkan Tabel 1, secara umum Model 3 (RF1) dan Model 4 (RF2) menampilkan hasil performa yang lebih baik dimana masing-masing memiliki nilai R^2 yaitu sebesar -1.880080745581838 dan -2.432728538383974.
+Berdasarkan data pada Tabel 1, secara umum, Model 3 (RF1) dan Model 4 (RF2) menunjukkan kinerja yang lebih baik, dengan masing-masing memiliki nilai R^2 sebesar -1.880080745581838 dan -2.432728538383974.
 
-Secara lebih jauh perbandingan Model 1, 2, 3, dan 4 bisa dilihat pada Gambar 4 berikut.
+Untuk memperdalam perbandingan antara Model 1, 2, 3, dan 4, silakan lihat Gambar 4 di bawah ini.
 
 ![download (1)](https://github.com/ahmadsuaif/Proyek-Pertama-Predictive-Analytics/assets/66425290/a46a2fa1-d5c5-4371-a18f-409a84bb42da)
 
 Gambar 4. Perbandingan Model berdasarkan Nilai Error (dalam 1e6)
 
-Berdasarkan Gambar 4 dapat terlihat bahwa nilai error train dan test dari Model 3 (RF1) dan Model 4 (RF2) jauh lebih baik dibandingkan model lainnya.
+Berdasarkan Gambar 4, terlihat bahwa nilai kesalahan pada data latih dan data uji dari Model 3 (RF1) dan Model 4 (RF2) jauh lebih baik daripada model lainnya.
 
-Selain itu dilakukan perbandingan nilai y_true terhadap nilai prediksi harga rumah dari 4 buah model yang dibuat. Tabel 2 berikut merupakan hasil dari evaluasi model yang telah dibuat.
+Selain itu, dilakukan perbandingan antara nilai aktual (y_true) dan nilai prediksi harga rumah dari keempat model yang telah dibuat. Tabel 2 berikut menunjukkan hasil evaluasi dari model-model tersebut.
+
 
 |     |y_true|prediksi_LR|prediksi_RR|prediksi_RF1|prediksi_RF2|
 |---|---|---|---|---|---|
@@ -238,7 +243,8 @@ Selain itu dilakukan perbandingan nilai y_true terhadap nilai prediksi harga rum
 Tabel 2. Perbandingan Model
 
 
-Berdasarkan hasil evaluasi, terlihat bahwa prediksi harga rumah dengan *Random Forest* (RF), baik RF1 (tanpa tuning) ataupun RF2 (dengan tuning) memberikan hasil yang paling mendekati y_true, dimana nilai y_true yaitu 341700 dan nilai RF1 dan RF2 masing-masing yaitu 347466.0 dan 315645.2. Dengan demikian bisa disimpulkan bahwa model yang telah dikembangkan dapat memprediksi harga rumah dengan baik dengan menggunakan *Random Forest Regressor*.
+Dari hasil evaluasi, terlihat bahwa prediksi harga rumah menggunakan Random Forest (RF), baik RF1 (tanpa penyetelan) maupun RF2 (dengan penyetelan), memberikan hasil yang paling mendekati nilai aktual (y_true), di mana nilai y_true adalah 341700, sedangkan nilai prediksi RF1 dan RF2 masing-masing adalah 347466.0 dan 315645.2. Oleh karena itu, dapat disimpulkan bahwa model yang telah dikembangkan mampu memprediksi harga rumah dengan baik menggunakan Random Forest Regressor.
+
 
 ## Referensi:
 [1] Hassan, Mohammad Mujaheed & Ahmad, Nobaya & Hariza, Ahmad & Hashim, Ahmad. (2021). Factors Influencing Housing Purchase Decision. 11. 429-443. 10.6007/IJARBSS/v11-i7/10295.
